@@ -17,41 +17,44 @@ import org.appcelerator.kroll.common.Log;
 
 import android.webkit.CookieManager;
 
-@Kroll.module(name="Android", id="com.polancomedia.cookies")
-public class AndroidModule extends KrollModule
-{
+@Kroll.module(name = "Android", id = "com.polancomedia.cookies")
+public class AndroidModule extends KrollModule {
 
 	// Standard Debugging variables
 	private static final String TAG = "CookiesModule";
 
 	// You can define constants with @Kroll.constant, for example:
 	// @Kroll.constant public static final String EXTERNAL_NAME = value;
-	
-	public AndroidModule()
-	{
+
+	public AndroidModule() {
 		super();
 	}
 
 	@Kroll.onAppCreate
-	public static void onAppCreate(TiApplication app)
-	{
-		//Log.d(TAG, "inside onAppCreate");
-		// put module init code that needs to run when the application is created
+	public static void onAppCreate(TiApplication app) {
+		// Log.d(TAG, "inside onAppCreate");
+		// put module init code that needs to run when the application is
+		// created
 	}
 
-	// Methods	
+	// Methods
 	@Kroll.method
-	public HashMap getCookie(String siteUrl){     
+	public HashMap getCookie(String siteUrl) {
 		HashMap<String, String> mMap = new HashMap<String, String>();
 
-	    CookieManager cookieManager = CookieManager.getInstance();
-	    String cookies = cookieManager.getCookie(siteUrl);       
-	    String[] temp=cookies.split("[;]");
-	    for (String ar1 : temp ){
-	    	String[] temp1=ar1.split("[=]");
-	    	mMap.put(temp1[0], temp1[1]);
-	    }              
-	    return mMap; 
-	}	
+		CookieManager cookieManager = CookieManager.getInstance();
+		String cookies = cookieManager.getCookie(siteUrl);
+		String[] temp = cookies.split("[;]");
+		for (String ar1 : temp) {
+			String[] temp1 = ar1.split("[=]");
+			mMap.put(temp1[0], temp1[1]);
+		}
+		return mMap;
+	}
+	@Kroll.method
+	//experimental added by paul
+	public void setCookie(String siteUrl, String cookie) {
+		CookieManager cookieManager = CookieManager.getInstance();
+		cookieManager.setCookie(siteUrl, cookie);
+	}
 }
-
