@@ -1,3 +1,5 @@
 .gradle
 ios/.gradle
 android/.gradle
+android/dist
+ios/dist
