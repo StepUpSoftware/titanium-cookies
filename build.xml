@@ -1,10 +1,8 @@
 <project name="ticookies" default="both">
     <property environment="env"/>
     <property file="build.properties" />
-    <target name="ios">
-        <exec dir="${basedir}/ios" executable="python" failonerror="true">
-            <arg line="build.py"/>
-        </exec>
+    <target name="iosbuild">
+        <exec dir="${basedir}/ios" executable="${titanium.build}" failonerror="true"/>
         <move file="ios/com.polancomedia.cookies-iphone-0.1.zip" todir="ios/dist"/>
     </target>
     <target name="iostest">
@@ -13,7 +11,8 @@
         </exec>
     </target>
     <target name="android">
-        <exec dir="${basedir}/android" executable="ant" failonerror="true"></exec>
+        <exec dir="${basedir}/android" executable="ant" failonerror="true"/>
     </target>
+    <target name="ios" depends="iosbuild, iostest"/>
     <target name="both" depends="ios, android"/>
 </project>
