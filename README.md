@@ -37,6 +37,7 @@ Use *gradle both* to build ios and android using gradle.
 Use *gradle ios* or *gradle android* for device specific builds.
 #### Using Ant
 Use *ant* for both or *ant ios* or *ant android* for specific builds.
+Use *ant test* to run *titanium.py run --platform ios* command
 ### Methods
 
 #### getCookie(url)
