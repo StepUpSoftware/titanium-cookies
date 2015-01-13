@@ -6,6 +6,7 @@
         <move file="ios/com.polancomedia.cookies-iphone-0.1.zip" todir="ios/dist"/>
     </target>
     <target name="android">
+        <mkdir dir="${basedir}/android/lib"/>
         <exec dir="${basedir}/android" executable="ant" failonerror="true"/>
     </target>
     <target name="test">
